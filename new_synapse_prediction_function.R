@@ -1,7 +1,8 @@
 #get xyz coordinates of connectors
 catmaid_get_connector_table(38885) -> connector_table
 connector_table[match(unique(connector_table$connector_id), connector_table$connector_id),] -> unique_connectors
-data.frame(connector_id = unique_connectors$connector_id, x = unique_connectors$x, y = unique_connectors$y, z = unique_connectors$z) -> connectors_xyz
+data.frame(connector_id = unique_connectors$connector_id, 
+           x = unique_connectors$x, y = unique_connectors$y, z = unique_connectors$z) -> connectors_xyz
 
 #resample a neuron to be tested to 1 um
 read.neuron.catmaid(2659704) -> Duck
@@ -18,7 +19,8 @@ counts = 0
 for (i in 1:length(connectors_xyz$connector_id)){
   for (j in 1:length(Duck_xyz$x)){
     counts = counts + 1
-    distances[counts] = sqrt(((connectors_xyz$x[i] - Duck_xyz$x[j])^2)+((connectors_xyz$y[i] - Duck_xyz$y[j])^2)+((connectors_xyz$z[i] - Duck_xyz$z[j])^2))
+    distances[counts] = 
+    sqrt(((connectors_xyz$x[i] - Duck_xyz$x[j])^2)+((connectors_xyz$y[i] - Duck_xyz$y[j])^2)+((connectors_xyz$z[i] - Duck_xyz$z[j])^2))
   }
 }
 
@@ -41,7 +43,8 @@ counts = 0
 for (i in 1:length(connectors_xyz$connector_id)){
   for (j in 1:length(PH_xyz$x)){
     counts = counts + 1
-    distances[counts] = sqrt(((connectors_xyz$x[i] - PH_xyz$x[j])^2)+((connectors_xyz$y[i] - PH_xyz$y[j])^2)+((connectors_xyz$z[i] - PH_xyz$z[j])^2))
+    distances[counts] = 
+    sqrt(((connectors_xyz$x[i] - PH_xyz$x[j])^2)+((connectors_xyz$y[i] - PH_xyz$y[j])^2)+((connectors_xyz$z[i] - PH_xyz$z[j])^2))
   }
 }
 
@@ -63,7 +66,8 @@ counts = 0
 for (i in 1:length(connectors_xyz$connector_id)){
   for (j in 1:length(Joffrey_xyz$x)){
     counts = counts + 1
-    distances[counts] = sqrt(((connectors_xyz$x[i] - Joffrey_xyz$x[j])^2)+((connectors_xyz$y[i] - Joffrey_xyz$y[j])^2)+((connectors_xyz$z[i] - Joffrey_xyz$z[j])^2))
+    distances[counts] = 
+    sqrt(((connectors_xyz$x[i] - Joffrey_xyz$x[j])^2)+((connectors_xyz$y[i] - Joffrey_xyz$y[j])^2)+((connectors_xyz$z[i] - Joffrey_xyz$z[j])^2))
   }
 }
 
