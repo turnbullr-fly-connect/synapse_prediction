@@ -10,7 +10,7 @@ resample(Duck, stepsize = 1000) -> Duck_resampled
 data.frame(x = Duck_resampled$d$X, y = Duck_resampled$d$Y, z = Duck_resampled$d$Z) -> Duck_xyz
 
 points3d(xyzmatrix(connectors_xyz))
-plot3d(FAFB)
+plot3d(FAFB)          #shows connectors as floating points
 
 #calculate distance between connectors and resampled nodes
 #d(A,B) = sqrt(((x2-x1)^2)+((y2-y1)^2)+((z2-z1)^2))
