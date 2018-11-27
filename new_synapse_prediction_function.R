@@ -73,39 +73,3 @@ for (i in 1:length(thresholds)){
   counts[i] = sum(distances <= thresholds[i])
 }
 data.frame(threshold_nm = as.numeric(thresholds), predicted_synapses = as.numeric(counts)) -> Joffrey_predicted_synapses
-
-
-
-
-#comparisson with potential_synapses()
-read.neuron.catmaid(38885) -> DA2_PN
-resample(DA2_PN, stepsize = 1000) -> DA2_PN_resampled
-
-thresholds = c(500, 600, 700, 800, 900, 1000)
-
-#Duck
-Duck_counts = vector("list", length = 6)
-a = 0
-for (i in thresholds) {
-  a = a + 1
-  Duck_counts[a] = potential_synapses(DA2_PN_resampled, Duck_resampled, sigma = s, s = i)
-}
-
-#Phil Harris
-PH_counts = vector("list", length = 6)
-a = 0
-for (i in thresholds) {
-  a = a + 1
-  PH_counts[a] = potential_synapses(DA2_PN_resampled, PH_resampled, sigma = s, s = i)
-}
-
-#Joffrey
-Joffrey_counts = vector("list", length = 6)
-a = 0
-for (i in thresholds) {
-  a = a + 1
-  Joffrey_counts[a] = potential_synapses(DA2_PN_resampled, Joffrey_resampled, sigma = s, s = i)
-}
-
-data.frame(threshold_nm = as.numeric(thresholds), Duck_potential_synapses = as.numeric(Duck_counts), Phil_Harris_potential_synapses = as.numeric(PH_counts), Joffrey_potential_synapses = as.numeric(Joffrey_counts)) ->
-  potential_synapses_comparrison
